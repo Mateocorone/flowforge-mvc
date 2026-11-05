@@ -22,12 +22,21 @@
 
         <h1 class="h4 mb-0">FlowForge</h1>
 
+        
         <form method="POST" action="/logout">
-        <button type="submit"
-                class="btn btn-outline-light btn-sm">
+
+          <input
+            type="hidden"
+            name="_csrf"
+            value="<%= _csrf %>">
+
+          <button type="submit"
+                  class="btn btn-outline-light btn-sm">
             Cerrar sesión
-        </button>
+          </button>
+
         </form>
+
 
     </div>
   </header>
@@ -154,10 +163,14 @@
       };
 
       try {
+        const token = document.querySelector('input[name="_csrf"]').value;
+
         const respuesta = await fetch('/admin/procesos', {
+
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': token
           },
           body: JSON.stringify(datos)
         });

@@ -39,8 +39,11 @@ module.exports.routes = {
   'POST /logout': 'AuthController.salir',
 
 
-  '/': { view: 'pages/homepage' },
+  'GET /csrfToken': {
+  action: 'security/grant-csrf-token'
+  },
 
+  'GET /': 'AuthController.login',
 
   /***************************************************************************
   *                                                                          *

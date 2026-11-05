@@ -10,7 +10,9 @@
  */
 
 module.exports.blueprints = {
-
+    actions: false,
+    rest: false,
+    shortcuts: false
   /***************************************************************************
   *                                                                          *
   * Automatically expose implicit routes for every action in your app?       *

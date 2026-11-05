@@ -102,10 +102,21 @@
       };
 
       try {
+        
+        const tokenRespuesta = await fetch('/csrfToken', {
+          credentials: 'same-origin'
+        });
+
+        if (!tokenRespuesta.ok) {
+          throw new Error('No se pudo obtener el token de seguridad');
+        }
+
+        const { _csrf } = await tokenRespuesta.json();
         const respuesta = await fetch('/login', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': _csrf
           },
           credentials: 'same-origin',
           body: JSON.stringify(datos)

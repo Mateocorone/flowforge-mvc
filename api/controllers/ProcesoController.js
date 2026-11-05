@@ -19,7 +19,8 @@ module.exports = {
       return res.view('admin/procesos', {
         layout: false,
         procesos,
-        usuarios
+        usuarios,
+        _csrf: req.csrfToken()
       });
 
     } catch (error) {
