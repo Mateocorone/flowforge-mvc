@@ -130,9 +130,9 @@ module.exports = {
   ***************************************************************************/
   session: {
      adapter: '@sailshq/connect-redis',
-  url: process.env.REDIS_URL,
-  secret: process.env.SESSION_SECRET,
-  name: '__Host-flowforge.sid',
+      url: process.env.REDIS_URL,
+      secret: process.env.SESSION_SECRET,
+      name: '__Host-flowforge.sid',
     /***************************************************************************
     *                                                                          *
     * Production session store configuration.                                  *
