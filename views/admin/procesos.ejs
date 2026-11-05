@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <title>Procesos | FlowForge</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+  <header class="bg-primary text-white py-3">
+    <div class="container">
+      <h1 class="h4 mb-0">FlowForge</h1>
+    </div>
+  </header>
+
+  <main class="container py-4">
+
+    <nav class="mb-4">
+      <a href="/admin/usuarios">Usuarios</a>
+      <span class="mx-2">|</span>
+      <a href="/admin/procesos">Procesos</a>
+    </nav>
+
+    <section class="mb-5">
+
+      <h2>Administración de procesos</h2>
+      <p>Crea los procesos que utilizará el motor de FlowForge.</p>
+
+      <form id="formProceso" class="card p-4">
+
+        <div class="mb-3">
+          <label for="nombre" class="form-label">
+            Nombre del proceso
+          </label>
+
+          <input
+            id="nombre"
+            name="nombre"
+            class="form-control"
+            maxlength="100"
+            required>
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">
+            Descripción
+          </label>
+
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            class="form-control"
+            rows="3"></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="creador" class="form-label">
+            Usuario creador
+          </label>
+
+          <select
+            id="creador"
+            name="creador"
+            class="form-select"
+            required>
+
+            <option value="">
+              Selecciona un usuario
+            </option>
+
+            <% usuarios.forEach(function(usuario) { %>
+              <option value="<%= usuario.id %>">
+                <%= usuario.nombre %> - <%= usuario.email %>
+              </option>
+            <% }); %>
+
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          Registrar proceso
+        </button>
+
+      </form>
+    </section>
+
+    <section>
+
+      <h2 class="h4 mb-3">Procesos registrados</h2>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Creador</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% procesos.forEach(function(proceso) { %>
+              <tr>
+                <td><%= proceso.id %></td>
+                <td><%= proceso.nombre %></td>
+                <td><%= proceso.descripcion || '-' %></td>
+                <td>
+                  <%= proceso.creador
+                    ? proceso.creador.nombre
+                    : 'Sin creador' %>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+
+        </table>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const formulario = document.getElementById('formProceso');
+
+    formulario.addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const datos = {
+        nombre: document.getElementById('nombre').value,
+        descripcion: document.getElementById('descripcion').value,
+        creador: document.getElementById('creador').value
+      };
+
+      try {
+        const respuesta = await fetch('/admin/procesos', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(datos)
+        });
+
+        const resultado = await respuesta.json();
+
+        if (!respuesta.ok) {
+          alert(resultado.error || 'No se pudo registrar');
+          return;
+        }
+
+        alert(resultado.mensaje);
+        window.location.reload();
+
+      } catch (error) {
+        console.error(error);
+        alert('Error al comunicarse con el servidor');
+      }
+    });
+  </script>
+
+</body>
+</html>
