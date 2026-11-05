@@ -30,6 +30,15 @@ module.exports.routes = {
   'GET /admin/nodos': 'NodoController.index',
   'POST /admin/nodos': 'NodoController.crear',
 
+  'GET /admin/transiciones': 'TransicionController.index',
+  'POST /admin/transiciones': 'TransicionController.crear',
+
+  
+  'GET /login': 'AuthController.login',
+  'POST /login': 'AuthController.ingresar',
+  'POST /logout': 'AuthController.salir',
+
+
   '/': { view: 'pages/homepage' },
 
 
