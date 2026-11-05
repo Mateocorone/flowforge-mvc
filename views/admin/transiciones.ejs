@@ -36,7 +36,7 @@
 
     <section class="card p-4 mb-5">
       <form id="formTransicion">
-
+        <input type="hidden" name="_csrf" value="<%= _csrf %>">
         <div class="mb-3">
           <label for="version" class="form-label">
             Versión del proceso
@@ -194,10 +194,13 @@
         };
 
         try {
+          const token = document.querySelector('input[name="_csrf"]').value;
           const respuesta = await fetch('/admin/transiciones', {
             method: 'POST',
             headers: {
-              'Content-Type': 'application/json'
+              'Content-Type': 'application/json',
+                  'X-CSRF-Token': token
+
             },
             body: JSON.stringify(datos)
           });

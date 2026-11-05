@@ -21,7 +21,9 @@ module.exports = {
       return res.view('admin/nodos', {
         layout: false,
         nodos,
-        versiones
+        versiones,
+          _csrf: req.csrfToken()
+
       });
 
     } catch (error) {

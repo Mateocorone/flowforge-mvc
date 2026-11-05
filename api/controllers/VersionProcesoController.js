@@ -20,7 +20,8 @@ module.exports = {
       return res.view('admin/versiones', {
         layout: false,
         versiones,
-        procesos
+        procesos,
+        _csrf: req.csrfToken()
       });
 
     } catch (error) {

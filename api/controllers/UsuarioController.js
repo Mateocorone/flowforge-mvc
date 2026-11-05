@@ -14,7 +14,8 @@ module.exports = {
     return res.view('admin/usuarios', {
       layout: false,
       usuarios,
-      roles
+      roles,
+      _csrf: req.csrfToken()
     });
   },
 

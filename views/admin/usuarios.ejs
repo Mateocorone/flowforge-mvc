@@ -36,6 +36,10 @@
 
       <form id="formUsuario" class="card p-4">
 
+        <input type="hidden"
+         name="_csrf"
+         value="<%= _csrf %>">
+
         <div class="mb-3">
           <label for="nombre" class="form-label">
             Nombre
@@ -159,10 +163,14 @@
     };
 
     try {
+      const token = document.querySelector('input[name="_csrf"]').value;
+
       const respuesta = await fetch('/admin/usuarios', {
+
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': token
         },
         body: JSON.stringify(datos)
       });

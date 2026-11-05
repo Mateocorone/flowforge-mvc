@@ -24,7 +24,9 @@ module.exports = {
         layout: false,
         transiciones,
         versiones,
-        nodos
+        nodos,
+          _csrf: req.csrfToken()
+
       });
 
     } catch (error) {
