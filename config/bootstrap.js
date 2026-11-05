@@ -14,7 +14,7 @@ module.exports.bootstrap = async function() {
   const rolesIniciales = [
 
     {
-      nombre: 'Administradir',
+      nombre: 'Administrador',
       descripcion: 'Gestiona usuarios y procesos'
     },
     {

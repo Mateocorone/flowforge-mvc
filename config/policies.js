@@ -10,13 +10,26 @@
 
 module.exports.policies = {
 
-  /***************************************************************************
-  *                                                                          *
-  * Default policy for all controllers and actions, unless overridden.       *
-  * (`true` allows public access)                                            *
-  *                                                                          *
-  ***************************************************************************/
+  '*': true,
 
-  // '*': true,
+  // Administración de usuarios
+  'usuario/index': 'esAdministrador',
+  'usuario/crear': 'esAdministrador',
+
+  // Administración de procesos
+  'proceso/index': 'esAdministrador',
+  'proceso/crear': 'esAdministrador',
+
+  // Administración de versiones
+  'versionproceso/index': 'esAdministrador',
+  'versionproceso/crear': 'esAdministrador',
+
+  // Administración de nodos
+  'nodo/index': 'esAdministrador',
+  'nodo/crear': 'esAdministrador',
+
+  // Administración de transiciones
+  'transicion/index': 'esAdministrador',
+  'transicion/crear': 'esAdministrador'
 
 };

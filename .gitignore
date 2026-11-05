@@ -46,7 +46,15 @@
 ################################################
 
 config/local.js
-
+node_modules/
+.env
+.env.*
+!.env.example
+.tmp/
+*.log
+npm-debug.log*
+.DS_Store
+  
 
 ################################################
 # Dependencies
