@@ -23,7 +23,7 @@ module.exports = {
 
     fechaPublicacion: {
       type: 'ref',
-      columnType: 'datetime',
+      columnType: 'timestamp',
     },
 
     proceso: {
