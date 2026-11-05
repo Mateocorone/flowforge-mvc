@@ -53,6 +53,7 @@ module.exports = {
     ***************************************************************************/
     migrate: 'safe',
 
+
     /***************************************************************************
     *                                                                          *
     * If, in production, this app has access to physical-layer CASCADE         *
@@ -65,6 +66,12 @@ module.exports = {
     // cascadeOnDestroy: false,
 
   },
+
+  
+  dataEncryptionKeys: {
+    default: process.env.DATA_ENCRYPTION_KEY
+  },
+
 
 
 
