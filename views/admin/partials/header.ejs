@@ -1,0 +1,27 @@
+﻿<header class="bg-primary text-white py-3">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center gap-3 mb-3">
+      <a href="/admin/procesos" class="text-white text-decoration-none h4 mb-0 fw-bold">FlowForge</a>
+      <form action="/logout" method="POST" class="m-0">
+        <input type="hidden" name="_csrf" value="<%= _csrf %>">
+        <button class="btn btn-outline-light btn-sm" type="submit">Cerrar sesi&oacute;n</button>
+      </form>
+    </div>
+    <nav class="d-flex flex-wrap gap-2" aria-label="NavegaciÃ³n administrativa">
+      <% const enlaces = [
+        { nombre: 'Usuarios', ruta: '/admin/usuarios' },
+        { nombre: 'Procesos', ruta: '/admin/procesos' },
+        { nombre: 'Versiones', ruta: '/admin/versiones' },
+        { nombre: 'Nodos', ruta: '/admin/nodos' },
+        { nombre: 'Transiciones', ruta: '/admin/transiciones' }
+      ]; %>
+      <% enlaces.forEach(function(enlace) { %>
+        <a href="<%= enlace.ruta %>"
+           class="btn btn-sm <%= paginaActual === enlace.ruta ? 'btn-light fw-semibold' : 'btn-outline-light' %>"
+           <%- paginaActual === enlace.ruta ? 'aria-current="page"' : '' %>>
+          <%= enlace.nombre %>
+        </a>
+      <% }); %>
+    </nav>
+  </div>
+</header>

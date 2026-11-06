@@ -197,13 +197,43 @@ Durante el desarrollo local se verificaron:
 
 ## 9. Estado del proyecto
 
-**Módulo MVC de administración implementado y probado localmente.**
+**Estado:** Implementado, desplegado y probado en producción.
 
-Pendiente de completar y verificar:
+FlowForge MVC está publicado mediante Render y utiliza PostgreSQL para la persistencia de los datos.
 
-- Configuración para despliegue público.
-- Persistencia de datos en el entorno de producción.
-- URL pública de demostración.
+### Infraestructura
+
+- **Hosting:** Render Web Service.
+- **Framework:** Sails.js.
+- **Base de datos:** PostgreSQL.
+- **Sesiones:** Redis mediante Render Key Value.
+- **Arquitectura:** Modelo-Vista-Controlador (MVC).
+
+### Pruebas realizadas en producción
+
+| Prueba | Resultado |
+|---|---|
+| Autenticación de Administrador | Correcto |
+| Control de acceso por roles | Correcto |
+| Administración de usuarios | Correcto |
+| Administración de procesos | Correcto |
+| Gestión de versiones | Correcto |
+| Creación de nodos | Correcto |
+| Creación de transiciones | Correcto |
+| Validaciones Back-End | Correcto |
+| Cierre de sesión | Correcto |
+
+### Acceso al sistema
+
+**URL pública:** PENDIENTE_AGREGAR_URL_RENDER
+
+El acceso al módulo administrativo requiere una cuenta autorizada con rol Administrador.
+
+Por seguridad, las credenciales de acceso y las variables de entorno no se publican en este repositorio.
+
+### Demostración
+
+**Video:** PENDIENTE_AGREGAR_ENLACE_VIDEO
 
 ## 10. Contexto académico
 
